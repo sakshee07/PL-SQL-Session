@@ -1,0 +1,21 @@
+--control statements
+
+declare 
+    sales_num number := 210; 
+begin  
+    if(sales_num = 200) then 
+    dbms_output.put_line('target is achived'); 
+    else 
+        dbms_output.put_line('target not is achived'); 
+        end if; 
+end;
+
+
+declare 
+    supplier_type varchar(19):= 'hardware'; 
+begin 
+    case supplier_type 
+    when 'hardware' then dbms_output.put_line('its south office..'); 
+    when 'software' then dbms_output.put_line('its north office..'); 
+    end case; 
+end;
