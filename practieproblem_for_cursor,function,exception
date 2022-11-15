@@ -1,0 +1,110 @@
+
+create table bank_service(
+    id_no number(35),
+    f_name varchar(20),
+    address varchar(40),
+    account_no number(8),
+    account_type varchar(12),
+    balance number(8,2));
+    
+    
+insert into bank_service values (01,'Sakshee','Pune-dhanori',122332,'saving',12000.00);
+insert into bank_service values (02,'Mrunal','Pune-Vimannagar',334556,'current',98000.90);
+insert into bank_service values (01,'Sneha','Mumbai-Thane',66789,'saving',9834.09);
+insert into bank_service values (01,'Sakshee','Nashik-MD',34526,'current',34567.70);
+insert into bank_service values (01,'Sakshee','Pune-bavdhan',123666,'saving',89651.08);
+
+select *from bank_service;
+
+--Cursor to insert and get data of an user from bank account.
+declare
+    p_name bank_service.f_name%type;
+    p_accountno  bank_service.account_no%type;
+    p_accountype bank_service.account_type%type;
+    p_balance bank_service.balance%type;
+    cursor c_list is
+    select f_name, account_no,account_type, balance from bank_service;
+
+begin
+    open c_list;
+    
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    close c_list;
+end;
+
+------------------------------------------------------------------------------------------------------------
+
+--Write a function to return count of account an user holds.
+
+create or replace function TotalCountOfAccountHolder
+    return number is
+    total number := 0;
+begin
+    select count(*) into total from bank_service;
+    return total;
+    end;
+    
+    
+declare
+    c number;
+begin 
+    c := TotalCountOfAccountHolder();
+    dbms_output.put_line('Total numbers of account holder is : ' || c);
+end;
+
+
+----------------------------------------------------
+
+--Write a function to get total BALANCE of BANK.
+
+create or replace function TotalBankBalance
+    return number is
+    total_balace number(14) := 0;
+begin
+    select sum (distinct balance) as total_balance into total_balace  from bank_service;
+    return total_balace;
+    end;
+
+declare 
+    b number;
+begin
+    b := TotalBankBalance();
+     dbms_output.put_line('Total balance of bank is : ' || b);
+end;
+
+
+---------------------------------------------------------
+--Write a function to return count of account an user holds. with exception handling.
+
+create or replace function CountUserHolder
+    return number is
+    total_count number := 0;
+begin
+    select count(*) into total_count from bank_service;
+    return total_count;
+    end;
+    
+declare
+    c number;
+    invalid_count exception;
+begin 
+    c := CountUserHolder();
+     dbms_output.put_line('Total numbers of account holder is : ' || c);
+     if c > 4 then
+     raise invalid_count;
+     end if;
+exception
+    when invalid_count then
+    dbms_output.put_line(' Sorry, this count of account holder is invalid  ' );
+end;
+
+-------------------------------------------------------
