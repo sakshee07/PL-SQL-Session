@@ -1,0 +1,97 @@
+--example for case
+DECLARE 
+     num INTEGER;  
+     num_to_word VARCHAR2(100);  
+BEGIN 
+  num := 8; 
+  CASE num 
+  WHEN 0 THEN 
+    num_to_word := 'Zero' ; 
+  WHEN 1 THEN 
+    num_to_word := 'One' ; 
+  WHEN 2 THEN 
+    num_to_word := 'Two' ; 
+  WHEN 3 THEN 
+    num_to_word := 'Three' ; 
+  WHEN 4 THEN 
+    num_to_word := 'Four' ; 
+  WHEN 5 THEN 
+    num_to_word := 'Five' ; 
+  WHEN 6 THEN 
+    num_to_word := 'Six' ; 
+  WHEN 7 THEN 
+    num_to_word := 'Seven' ; 
+  WHEN 8 THEN 
+    num_to_word := 'Eight' ; 
+  WHEN 9 THEN 
+    num_to_word := 'Nine' ; 
+  ELSE 
+    num_to_word := 'Please enter from 0 to 9' ; 
+  END CASE; 
+  DBMS_OUTPUT.PUT_LINE( num_to_word ); 
+END;
+
+--example for GCD
+DECLARE 
+	num1 INTEGER; 
+	num2 INTEGER; 
+	remainder INTEGER; 
+BEGIN 
+	num1 := 3; 
+	num2 := 30; 
+ 
+	WHILE MOD(num2, num1) != 0  
+    LOOP 
+		remainder := MOD(num2, num1); 
+ 
+		num2 := num1; 
+ 
+		num1 := remainder; 
+	END LOOP; 
+ 
+	dbms_output.Put_line('GCD of '||num1||' and '||num2||' is '||num1); 
+END;
+
+----Factorial
+
+Declare 
+  
+num   number:= 8; 
+  
+fact number:= 1; 
+  
+temp number; 
+  
+begin 
+  
+  temp := num; 
+  
+   while (num > 0) 
+loop 
+    fact := fact * num; 
+  
+    num   := num - 1; 
+  
+ end loop; 
+  
+  Dbms_Output.Put_line('factorial of ' || num || 
+  
+                       '  is ' || fact); 
+end;
+
+--star pattern
+
+eclare 
+n number:=5; 
+i number; 
+j number; 
+begin 
+for i in 1..n 
+loop 
+for j in 1..i 
+loop 
+dbms_output.put('*'); 
+end loop; 
+dbms_output.new_line; 
+end loop; 
+end; 
