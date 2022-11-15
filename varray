@@ -1,0 +1,16 @@
+--varray practice problem
+declare 
+    type nameArray is varray(6) of varchar(30); 
+    type grades is varray(6) of integer; 
+    names namearray; 
+    marks grades; 
+    total integer; 
+begin 
+    names :=nameArray('Sakshee','Akshay','Nmaita','Sneha','Priya','Neha'); 
+    marks := grades(90,89,700,65,97,99); 
+    total := names.count; 
+    for i in 1..total 
+    loop 
+    dbms_output.put_line('student :'  || names(i)|| ', Marks: '|| marks(i)); 
+    end loop; 
+end;
