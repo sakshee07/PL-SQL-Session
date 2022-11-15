@@ -1,0 +1,65 @@
+
+create table bank_service(
+    id_no number(35),
+    f_name varchar(20),
+    address varchar(40),
+    account_no number(8),
+    account_type varchar(12),
+    balance number(8,2));
+    
+    
+insert into bank_service values (01,'Sakshee','Pune-dhanori',122332,'saving',12000.00);
+insert into bank_service values (02,'Mrunal','Pune-Vimannagar',334556,'current',98000.90);
+insert into bank_service values (01,'Sneha','Mumbai-Thane',66789,'saving',9834.09);
+insert into bank_service values (01,'Sakshee','Nashik-MD',34526,'current',34567.70);
+insert into bank_service values (01,'Sakshee','Pune-bavdhan',123666,'saving',89651.08);
+
+select *from bank_service;
+
+declare
+    type customer_namedata is varray(8) of varchar(20);
+    type bank_accountdata is varray(8) of number;
+    f_name customer_namedata;
+    account_no bank_accountdata;
+begin
+    select f_name,account_no bulk collect into f_name, account_no from bank_service;
+    for i in 1..account_no.count loop
+    dbms_output.put_line('customer name: '|| f_name(i) ||' & Account no : '|| account_no(i));
+    end loop;
+end;
+
+declare
+    type customer_namedata is varray(8) of varchar(20);
+    type bank_accountdata is varray(8) of number;
+    type bank_accounttype is varray(8) of varchar(10);
+    type bank_accountbalnce is varray(8) of number(10);
+    f_name customer_namedata;
+    account_no bank_accountdata;
+    balance bank_accountbalnce;
+   account_type bank_accounttype;
+    
+begin
+    select f_name,account_no,balance, account_type bulk collect into f_name, account_no,balance,account_type from bank_service;
+    for i in 1..account_no.count loop
+    dbms_output.put_line('customer name: '|| f_name(i) ||' & Account no : '|| account_no(i) || ' & account type is : '|| account_type(i)
+        || ' & account balance  : '|| balance(i) 
+    );
+    end loop;
+end;
+
+
+declare
+    type customer_namedata is table of varchar(20);
+    type bank_accountdata is table of number;
+    f_name customer_namedata;
+    account_no bank_accountdata;
+    i integer := 1;
+    
+begin
+    select f_name,account_no bulk collect into f_name, account_no from bank_service;
+    while i<=account_no.count loop
+    dbms_output.put_line('customer name: '|| f_name(i) ||' & Account no : '|| account_no(i));
+    i := i+1;
+    end loop;
+end;
+
