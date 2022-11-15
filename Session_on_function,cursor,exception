@@ -1,0 +1,194 @@
+--session on procedure,cursor,exception
+
+- stored procedure
+syntax->
+    create or replace procedure nameofprocedure
+    is
+    begin
+    --
+    end
+    
+    execute procedurename
+    exec procedurename()
+    
+    
+--function
+--it will always return value
+--it will do all the operation which procedure
+
+  /*create or replace function nameoffunction
+  return datatype
+    is
+    begin
+    --
+    end
+    */
+    
+    ex.
+    create table bank_service(
+    id_no number(35),
+    f_name varchar(20),
+    address varchar(40),
+    account_no number(8),
+    account_type varchar(12),
+    balance number(8,2));
+    
+    insert into bank_service values (01,'Sakshee','Pune-dhanori',122332,'saving',12000.00);
+    insert into bank_service values (02,'Mrunal','Pune-Vimannagar',334556,'current',98000.90);
+    insert into bank_service values (01,'Sneha','Mumbai-Thane',66789,'saving',9834.09);
+    insert into bank_service values (01,'Sakshee','Nashik-MD',34526,'current',34567.70);
+    insert into bank_service values (01,'Sakshee','Pune-bavdhan',123666,'saving',89651.08);
+
+    select * from bank_service;
+    --creating function
+    
+    create or replace function TotalCount
+    return NUMBER is 
+    total number := 0;
+    begin
+    select count(*) into total from bank_service;
+    return total;
+    end;
+    --calling a function
+    
+    declare
+    c number;
+    begin
+    c := TotalCount();
+    dbms_output.put_line('total number of customers is '|| c);
+    end;
+    
+    
+    
+    --exception handling
+    
+    --exception-->
+    --while complilation any mistakes that is compilation error(while writing code)
+    --after running u getting error given by system (runtime)--exception
+    
+    --exception handlind will help you handle runtime error
+    --2 types
+    --  1) in built/system defined/named-- already in db
+    --   2) user defined
+    
+   -- error code      exception name
+   --  ORA-1403:      no_data_found
+   --                 value_error
+   --                 invalid_cursor
+   ex-->
+   
+   declare
+   p_name bank_service.f_name%type;
+    p_id bank_service.id_no%type;
+    
+    begin
+    select f_name into p_name from bank_service where id_no = p_id;
+     dbms_output.put_line('total number of customers is '|| p_name);
+    end;
+    --output will look like
+    --ORA-01403: no data found ORA-06512: at line 6
+   -- such error will get genrate.
+
+--this is how we can use exception inbuilt
+
+ex.-->
+declare
+    p_name bank_service.f_name%type;
+    p_id bank_service.id_no %type;
+    
+begin
+    select f_name into p_name from bank_service where id_no = p_id;
+     dbms_output.put_line('customers is '|| p_name);
+     
+exception
+     when no_data_found then 
+       dbms_output.put_line(' customers is '|| p_id ||' not exist' );
+end;
+    
+    
+--user defined
+--1)raise through-- inbuilt msg will be user defined
+--2)raise application'--need to go with error no
+
+ex-->
+declare 
+ marks number := 85;
+ not_allowed exception;
+begin
+    if marks < 95 then 
+    raise not_allowed;
+    end if;
+exception
+    when not_allowed then 
+    dbms_output.put_line(' Sorry, Not eligible for MBBS.  ' );
+    dbms_output.put_line(SQLCODE ); --NO OF ENCOUNTER ERROR
+     dbms_output.put_line(SQLERRM ); -- RETURN ASSOCIATED WITH ERROR NNO
+end;
+
+-- output got as
+----Statement processed.
+-- Sorry, Not eligible for MBBS.  
+
+
+--raised application
+ex-->
+declare 
+ marks number := 85;
+ not_allowed exception;
+begin
+    if marks < 95 then 
+    raise_application_error(200008,' Sorry, Not eligible for MBBS. ');
+    end if;
+    
+    exception when others then 
+    dbms_output.put_line(SQLERRM );
+    
+end;
+
+
+CURSOR
+Impliciit 
+explicit 
+
+--ex.implicit cursor--inbuilt
+
+begin
+insert into bank_service(
+id_no, f_name,address,account_no, account_type,balance ) values (22,'Nita','Pune',12345,'saving',12000);
+
+if(SQL%found)
+then  dbms_output.put_line('true' );
+else
+ dbms_output.put_line('false' );
+ end if;
+ end;
+ select * from bank_service;
+ 
+ explicit--
+ 
+  select * from bank_service;
+ 
+ 
+declare
+   p_name bank_service.f_name%type;
+    cursor c_list is
+    select f_name from bank_service;
+    
+begin
+    open c_list;
+    
+    fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+     fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+     fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+     fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+     fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+     fetch c_list into p_name;
+    dbms_output.put_line(c_list%rowcount|| '--' ||  p_name );
+    close c_list;
+
+end;
