@@ -1,0 +1,120 @@
+nested block
+outer first 
+inner secnd block
+if we are giving similar names we should give like no 20(blocklabel ans variable
+
+<<parent>>
+declare
+    blockname varchar(25);
+    name varchar(12);
+begin
+    blockname := 'parent';
+    name := 'priya';
+    
+<<child>>
+declare
+    lockname varchar(25);
+begin
+    blockname := 'child';
+    
+    dbms_output.put_line(parent.blockname);
+     dbms_output.put_line(name);
+    dbms_output.put_line(blockname);
+    end;
+end;
+------------------------------------------------------------
+
+dynamic sql
+1)execute imeediate ---run sql commands 
+2)dbms sql---
+
+begin
+truncate table s1;
+end;
+we can do in such way-->
+begin
+execute immediate'truncate table s1;'
+end;
+
+
+create or replace procedure CheckSal(v_emp_no number)
+as
+v_saql varchar(200);
+v_sal number;
+
+begin
+v_sql :='select salary fromemp where emp_no := empno';
+execute immediate v_Sql into v_salary using v_emp_no;
+dbms_output.put_line('salary is : '|| v_sal);
+end;
+
+execute Checksal(10);
+
+
+OBJECT type
+1)attributes
+2)methods
+
+
+combination of record type and package
+
+create table bank_service(
+    id_no number(35),
+    f_name varchar(20),
+    address varchar(40),
+    account_no number(8),
+    account_type varchar(12),
+    balance number(8,2));
+    
+    
+insert into bank_service values (01,'Sakshee','Pune-dhanori',122332,'saving',12000.00);
+insert into bank_service values (02,'Mrunal','Pune-Vimannagar',334556,'current',98000.90);
+insert into bank_service values (01,'Sneha','Mumbai-Thane',66789,'saving',9834.09);
+insert into bank_service values (01,'Sakshee','Nashik-MD',34526,'current',34567.70);
+insert into bank_service values (01,'Sakshee','Pune-bavdhan',123666,'saving',89651.08);
+
+select *from bank_service;
+
+
+create object type:
+
+create type cust_obj as object(
+cust_no number,
+cust_name varchar2(30),
+balance number,
+
+constructor function cust_obj(p_cust_no number, p_cust_name varchar2, p_balance number) return self as result,
+member procedure insert_rec,
+member procedure display_rec);
+
+create or replace type body cust_obj as
+constructor function cust_obj(p_cust_no number, p_cust_name varchar2, p_balance number) return self as result,
+is 
+begin
+    dbms_output.put_line('constructr copied');
+    self.cust_no := p_cust_no;
+    self.cust_name := p_cust_name;
+    self.cust_balance := p_balance;
+    return;
+    end;
+    
+    
+    member procedure insert_rec;
+    is begin 
+    insert into cust(cust_no,cust_name,cust_salary);
+    end;
+    
+    member procedure display_rec;
+     is begin 
+     dbms_output.put_line('employee name : '|| cust_name);
+     dbms_output.put_line('employee no : '|| cust_no);
+          dbms_output.put_line('employee salary : '|| cust_salary);
+
+    end;
+end;
+
+
+declare
+    cust_details cust_obj;
+    begin
+    emp_details := emp_obj('abx'
