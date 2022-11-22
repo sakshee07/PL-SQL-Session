@@ -1,0 +1,125 @@
+create table demo(
+no number(10),
+name varchar(10),
+city varcha(12)r,
+gender char(2));
+
+
+
+
+create table bank_service(
+    id_no number(35),
+    f_name varchar(20),
+    address varchar(40),
+    account_no number(8),
+    account_type varchar(12),
+    balance number(8,2));
+    
+    
+insert into bank_service values (01,'Sakshee','Pune-dhanori',122332,'saving',12000.00);
+insert into bank_service values (02,'Mrunal','Pune-Vimannagar',334556,'current',98000.90);
+insert into bank_service values (01,'Sneha','Mumbai-Thane',66789,'saving',9834.09);
+insert into bank_service values (01,'Sakshee','Nashik-MD',34526,'current',34567.70);
+insert into bank_service values (01,'Sakshee','Pune-bavdhan',123666,'saving',89651.08);
+
+select *from bank_service;
+
+declare
+    p_name bank_service.f_name%type;
+    p_accountno  bank_service.account_no%type;
+    p_accountype bank_service.account_type%type;
+    p_balance bank_service.balance%type;
+    cursor c_list is
+    select f_name, account_no,account_type, balance from bank_service;
+
+begin
+    open c_list;
+    
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    fetch c_list into p_name,p_accountno,p_accountype,p_balance;
+    dbms_output.put_line('Account holder name is : ' ||p_name ||' , Account no is : '|| p_accountno||' Account type is '||p_accountype|| ' and balance is : '|| p_balance);
+    close c_list;
+end;
+    
+    
+    
+    ---function
+    
+    create or replace function CountBalance
+    return number is 
+    total number := 0;
+    
+begin
+    select sum(distinct balance) as total into total from bank_service;
+    return total;
+    end;
+    
+    declare
+    b number;
+    
+    begin
+    b := CountBalance();
+    dbms_output.put_line('total is : '|| b);
+    
+    end;
+    
+    --function
+    create or replace function countb
+    return number is
+    addition number := 0;
+    
+begin
+    select sum(distinct balance) as addition into addition from bank_service;
+    return addition;
+    end;
+    
+declare
+    c number;
+begin
+    c := countb();
+    dbms_output.put_line('total ..'|| c);
+    end;
+    
+    --------------
+    create or replace procedure FindMin
+      id_no number(35),
+    f_name varchar(20);
+     
+    is begin
+    insert into bank_service values();
+    end;
+    
+    
+    create table demo1(id number(10) primary key,name varchar2(100));  
+
+-- procedure
+create or replace procedure demo
+       ( id_no  in number,
+    f_name in varchar,
+    address in varchar,
+    account_no in number,
+    account_type in  varchar,
+    balance in number)
+    
+is begin
+insert into bank_service values(id_no,f_name,address,account_no,account_type,balance);
+end;
+
+exec demo (11,'sima','Surat',12432,'savings',34567);
+end;
+create or replace procedure demos
+   ( id in number,
+    name in varchar)
+    is begin
+    insert into demo1 values (id,name);
+    end;
+    
+    exec demos(12,'siya');
+    select * from bank_service;
