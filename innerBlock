@@ -1,0 +1,14 @@
+inner block to anoyomous block
+declare
+    v_outer varchar(10) := 'pl/sql'; 
+begin
+    DECLARE  
+        V_Inner varchar(20) := 'vvvvvv';
+    begin 
+      dbms_output.put_line('inside --   ' ||v_outer ||  V_Inner);
+      end;
+    dbms_output.put_line('   ' ||v_outer);
+end;
+
+inner cant use to outer
+..outer can be used
