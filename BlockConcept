@@ -1,0 +1,78 @@
+Blocks
+everything will happen between begin and end keyword...
+declare_>optional
+begin(mandt
+exception(optional
+end;
+
+blocks-->
+1)annoymous block
+2)procedure
+3)Functions-->must return a value
+
+set server output on-->
+dbms_output-->oracle package
+
+begin
+dbms_output.put_line('plsql part');
+end;
+
+
+variables
+
+declare 
+    v_num number not null := 60;
+begin
+    dbms_output.put_line('number '|| v_num);
+end;
+
+
+declare 
+    v_num number(10,1) not null := 60.124;
+begin
+    dbms_output.put_line('number '|| v_num);
+end;
+
+
+declare 
+    v_num pls_integer not null := 60;
+begin
+    dbms_output.put_line('number '|| v_num);
+end;
+
+
+declare 
+    v_date date not null := timestamp;
+begin
+    dbms_output.put_line('date : '|| v_date);
+end;
+
+
+declare 
+    v_date timestamp not null := systimestamp;
+begin
+    dbms_output.put_line('date : '|| v_date);
+end;
+
+
+
+declare 
+    v_date timestamp(3) not null := systimestamp;
+begin
+    dbms_output.put_line('date : '|| v_date);
+end;
+
+
+how many days /years passed?
+
+declare 
+    v_date interval day(4) to second(2) := '24 02:05:21.01';
+begin
+    dbms_output.put_line('date : '|| v_date);
+end;
+
+declare 
+    v_date interval year to month:= '12-2';
+begin
+    dbms_output.put_line('date : '|| v_date);
+end;
