@@ -1,0 +1,46 @@
+ --------------------basic loop-------------
+declare
+    v_num number(30) := 1;
+begin
+    loop
+    exit when v_num >10;
+            dbms_output.put_line('my counter ' || v_num);
+            v_num := v_num + 1;
+            end loop;
+        end;
+    
+    --------------------while loop---------------------
+          
+declare     
+    v_num number:= 1;
+begin
+    while v_num <= 10 loop
+    dbms_output.put_line('my counter ' || v_num);
+    v_num := v_num +1;
+    exit when v_num >10;
+    end loop;
+end;
+ -------------------for loop-----------------------------
+     
+begin
+    for i in reverse 1..3 loop
+        dbms_output.put_line('my counter ' || i);
+        end loop;
+    end;
+-------------------------- inner loop----------
+
+declare
+    v_inner number := 1;
+begin
+    for v_outer in 1..5 loop
+    dbms_output.put_line('-----------' ||v_outer);
+    v_inner := 1;
+    
+    loop 
+    v_inner := v_inner+1;
+        dbms_output.put_line('-----------' ||v_inner);
+        exit when v_inner *v_outer >= 15;
+        end loop;
+        end loop;
+   end;
+
