@@ -1,0 +1,572 @@
+Questions asked frequently
+
+Two-tier architecture consists of two layers : Client Tier and Database (Data Tier). 
+like railway booking system
+
+Three-tier architecture consists of three layers : Client Layer, Business Layer and Data Layer
+if we access to any website for admissiion then we are not direclty connected to db.
+----------------------------------------------------------------------------------------------------------------
+stack memory-stack memory is used to store items which have a very short life like local variables, a reference variable of objects 
+
+Heap Memory---
+Heap memory is allocated to store objects and JRE classes.	
+
+	JVM `	a has divided memory space between two parts one is Stack and another one is Heap space. Stack space is mainly used for 		storing order of method execution and local variables.
+
+	Stack always stored blocks in LIFO order whereas heap memory used dynamic allocation for allocating and deallocating 			memory blocks. 
+
+	Memory allocated to the heap lives until one of the following events occurs :
+
+	Program terminated 
+	Memory free 
+------------------------------------------------------------------------------------------------------------------------------------------
+*jwt
+	Json web token used securely to transfer the information between two parties 
+	used for authantiction and data transfer between the client and server.
+	divided into three parts-header,payload,signature with (.)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+*What are dependencies.
+
+	=a code library or package that is reused in a new piece of software
+	=through which the Spring container “injects” objects into other objects or “dependencies”
+
+*dependency injection
+	-Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that 
+	 it can be easy to manage and test the application.
+	-Dependency Injection is the ability of an object to supply dependencies of another object.
+	-Dependency Injection makes our programming code loosely coupled.
+	Spring framework provides two ways to inject dependency
+	
+	Constructor Injection: In this type of injection, the injector supplies dependency through the client class constructor.
+	
+	Setter Injection / Property Injection: In this type of injection, the injector method injects the dependency to the setter method exposed by the client.
+-------------------------------------------------------------------------------------------------
+Inversion of Control
+	-As I have mentioned above Inversion of Control is a principle based on which, Dependency Injection is made. 
+	Also, as the name suggests, Inversion of Control is basically used to invert different kinds of additional responsibilities of a 		class rather than the main responsibility.
+	
+--------------------------------------------------------------------------------------------------------------------
+*inheritance
+	Inheritance in Java is a mechanism in which one object acquires all the properties and behaviors of a parent object.
+	 It is an important part of OOPs (Object Oriented programming system).
+	 When you inherit from an existing class, you can reuse methods and fields of the parent class. 
+	 why we use inheritance--->
+	-For Method Overriding (so runtime polymorphism can be achieved).
+	-For Code Reusability
+	Class: A class is a group of objects which have common properties. It is a template or blueprint from which objects are created.
+	Sub Class/Child Class: Subclass is a class which inherits the other class. It is also called a derived class, extended class, or child 	class.
+	Super Class/Parent Class: Superclass is the class from where a subclass inherits the features. It is also called a base class or a 		parent class.
+	--The idea behind inheritance in Java is that you can create new classes that are built upon existing classes.
+	
+	class Employee{  
+ 	float salary=40000;  
+	}  
+	
+	class Programmer extends Employee{  
+ 	int bonus=10000;  
+ 	public static void main(String args[]){  
+	   Programmer p=new Programmer();  
+	   System.out.println("Programmer salary is:"+p.salary);  
+	   System.out.println("Bonus of Programmer is:"+p.bonus);  
+}  
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+
+*spring and spring boot
+
+	=Spring is module of spring framework.
+	
+	=Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+	=Open source framework provides infrastructure support for delevering java applications.
+	
+	Spring                                                                                                   springboot
+	important feature - dependancy injection                                autoconfiguration
+	
+	here need to write boilerplate code                                       it redues code
+	
+	manually need to define dependacy in pom.xml                 comes with starter in pom.xml file internally takes care for 											 dependacy jars
+------------------------------------------------------------------------------------------------------------------------------------	
+
+Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies that you have added.
+-----------------------------------
+	
+	
+*override of tostring method
+
+	Java toString() method
+
+	If you want to represent any object as a string, toString() method comes into existence.
+
+	The toString() method returns the string representation of the object.
+
+	If you print any object, java compiler internally invokes the toString() method on the object. So overriding the toString() 			method, returns the desired output, it can be the state of an object etc. depends on your implementation.
+
+	Advantage of Java toString() method
+
+	By overriding the toString() method of the Object class, we can return values of the object, so we don't need to write much 		code.
+	
+	class Student{  
+ int id;  
+ String name;  
+ String address;  
+
+ Student(int id, String name, String address){  
+ this.id=id;  
+ this.name=name;  
+ this.address=address;  
+ }  
+
+//overriding the toString() method  
+public String toString(){ 
+  return id+" "+name+" "+address;  
+ }  
+ public static void main(String args[]){  
+   Student s1=new Student(100,"Jo","Success");  
+   Student s2=new Student(50,"Mex","Failed");  
+
+   System.out.println(s1);//compiler writes here s1.toString()  
+   System.out.println(s2);//compiler writes here s2.toString()  
+ }  
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+*microservices
+	=Microservices means many small services, building small, self-contained, ready to run applications.
+	 =In monolithic architecture, a combination of many components in an application becomes a large application that has many 		    disadvantages. For example, if a monolithic application down, the entire application will be down
+	 Eureka Server is an application that holds the information about all client-service applications.
+	  Every Micro service will register into the Eureka server and 
+	  Eureka server knows all the client applications running on each port and IP address. Eureka Server is also known as  			Discovery Server.
+------------------------------------------------------------------------------------------------------------------------
+*Interface
+	interface is one of the mechanism to achive abstarction.
+	The interface in Java is a mechanism to achieve abstraction. 
+	There can be only abstract methods in the Java interface, not method body. It is used to achieve abstraction and multiple 		inheritance in Java.
+
+	In other words, you can say that interfaces can have abstract methods and variables. It cannot have a method body.
+
+	Java Interface also represents the IS-A relationship.
+ 	
+ 	There are mainly three reasons to use interface. They are given below.
+
+	=It is used to achieve abstraction.
+	=By interface, we can support the functionality of multiple inheritance.
+	=It can be used to achieve loose coupling.
+	
+	interface printable{  
+void print();  
+}  
+class A6 implements printable{  
+public void print(){System.out.println("Hello");}  
+  
+public static void main(String args[]){  
+A6 obj = new A6();  
+obj.print();  
+ }  
+} 
+-----------------------------------------------------------------------------------------------
+*serializable interface
+
+*postman and swagger
+	Postman is an API(application programming interface) development tool which helps to build, test and modify APIs. 
+	Almost any functionality that could be needed by any developer is encapsulated in this tool. 
+	 Postman sends an API request to the web server and receives the response, whatever it is
+
+----------------------------------------------------------------------------------------------------------------
+*array and array list
+	array is group similar objects 
+	like we can create array of integer , string,
+	int [] array ={1,2,3};
+	int [] array = new int[3];
+	array.length
+	array is data structue containg number of data values
+	
+	ArrayList is part of Java's collection framework and implements Java's List interface.
+	arraylist
+	is growable 
+	we can increase the size
+	arraylist.size
+-------------------------------------------------------------------------------------------------------------------------------------
+*What is abstraction.
+	=Hiding implimentation details showing functionality.
+	=There are two ways to achieve abstraction in java
+
+	-Abstract class (0 to 100%)
+	
+	
+	
+	
+	-Interface (100%)
+	
+	
+----------------------------------------------------------------------------------------------------------------------------------
+	=There are two types of modifiers in Java: access modifiers and non-access modifiers.
+
+	=The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class.
+	= We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
+
+There are four types of Java access modifiers:
+
+Private: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
+
+Default: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+
+Protected: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+
+Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+
+There are many non-access modifiers, such as static, abstract, synchronized, native, volatile, transient, etc. Here, we are going to learn the access modifiers only.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+*What is multilevel inheritance.
+	=When there is a chain of inheritance, it is known as multilevel inheritance.
+	 =As you can see in the example given below, BabyDog class inherits the Dog class which again inherits the Animal class, so 		there is a multilevel inheritance.
+------------------------------------------------------------------------------------------------------------------------------------
+
+*How do you connect with database.
+	There are 5 steps to connect any java application with the database using JDBC. These steps are as follows:
+	1)Register the Driver class
+	2)Create connection
+	3)Create statement
+	4)Execute queries
+	5)Close connection
+	
+	The JDBC API is a Java API that can access any kind of tabular data, especially data stored in a relational database.
+	 JDBC helps you to write Java applications that manage these three programming activities: Connect to a data source, like a 		database.
+	 Send queries and update statements to the database.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+	polymorphism is concept in object oriented programming.
+	one of the pillar of oops concept.
+	polymorphism is ability of an objvet to exhiobit in more than forms.
+	two types 
+	comiple time
+	polymorphism achieved at compile time 
+	we achive it by method overloading
+	
+	 and run time
+	 
+
+
+overloading and overrirding
+
+
+When the method signature (name and parameters) are the same in the superclass and the child class, it's called overriding. 
+When two or more methods in the same class have the same name but different parameters, it's called overloading.
+-------------------------------------------------------------------------------------------------------------------
+
+
+*What are properties file.
+
+-----------------------------------------------------------------------------------------------------------------
+
+*How do you inject dependencies
+	What are the ways to inject bean dependencies?
+	They are as follows.
+	Constructor based Dependency Injection.
+	Setter based Dependency Injection.
+
+final
+	=the final variable cannot be reinitialized with another value
+	=the final method cannot be overridden
+	=the final class cannot be extended
+
+static 
+	The static variable can be used to refer to the common property of all objects (which is not unique for each object),	
+	 This means we'll create only one instance of that static member that's shared across all instances of the class.
+
+*Polymorphism
+	Polymorphism in Java is a concept by which we can perform a single action in different ways. Polymorphism is derived from 2 		Greek words: poly and morphs. The word "poly" means many and "morphs" means forms. So polymorphism means many 		forms.
+
+	There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism. 
+	We can perform polymorphism in java by method overloading and method overriding.
+
+
+
+*Hibernate
+*PLSQL
+ The major function of a cursor is to retrieve data, one row at a time, from a result set,	
+--------------------------------------------------------------------------------------------------------------------
+*Write a Cursor
+		= major function of a cursor is to retrieve data, one row at a time, from a result set
+		
+	Implicit Cursors									Explicit Cursors
+	Implicit cursors are automatically  						Explicit cursors needs to be defined explicitly
+	created when select statements are executed.				by the user by providing a name.
+	
+	They are capable of fetching a single row at a time.			Explicit cursors can fetch multiple rows.
+	
+	Closes automatically after execution.						Need to close after execution.
+	
+	They are more vulnerable to errors such as Data errors, etc.		They are less vulnerable to errors(Data errors etc.)
+	
+	Implicit cursors are less efficient.						Comparative to Implicit cursors, explicit
+													cursors are more efficient.
+*Count Duplicate entries in Table
+----------------------------------------------------------------------------------------
+*Constructor 
+	In Java, a constructor is a block of codes similar to the method. It is called when an instance of the class is created. At the time 		of calling constructor, memory for the object is allocated in the memory.
+
+	It is a special type of method which is used to initialize the object.
+
+	Every time an object is created using the new() keyword, at least one constructor is called.
+----------------------------------------------------------------------
+*Access specifier 
+	=There are two types of modifiers in Java: access modifiers and non-access modifiers.
+	=The access modifiers in Java specifies the accessibility or scope of a field, method, constructor, or class. 
+	=We can change the access level of fields, constructors, methods, and class by applying the access modifier on it.
+
+There are four types of Java access modifiers:
+
+=Private: The access level of a private modifier is only within the class. It cannot be accessed from outside the class.
+=Default: The access level of a default modifier is only within the package. It cannot be accessed from outside the package. If you do not specify any access level, it will be the default.
+=Protected: The access level of a protected modifier is within the package and outside the package through child class. If you do not make the child class, it cannot be accessed from outside the package.
+=Public: The access level of a public modifier is everywhere. It can be accessed from within the class, outside the class, within the package and outside the package.
+There are many non-access modifiers, such as static, abstract, synchronized, native, volatile, transient, etc. Here, we are going to learn the access modifiers only.
+--------------------------------------------------------------------------
+* This and super 
+
+this keyword we are usong to invoke current class constructor,method,instance variable
+
+super keyword we are using to invoke parent class instance variable,method,variables
+  ------------------------------------------------------------------------------------------------
+* String, string builder, string buffet 
+
+String							StringBuffer						StringBuilder
+if our content is fiexed and			if our content is not fixed,			if our content is not fixed and we dont want 
+it is not going to change				if we want to achivee tread safety		thread safety will use string builder
+again and again will use string 			will use string buffer
+
+							asynchrouns					synchronous
+							
+							means only one thread at a time		means multiple thread we can use at time
+-------------------------------------------------------------------------------------------------------------------------						
+* Singleton design 	
+	A design pattern provides a general reusable solution for the common problems that occur in software design. 
+	The pattern typically shows relationships and interactions between classes or objects.
+	The idea is to speed up the development process by providing well-tested, proven development/design paradigms
+	
+	In other words, a class must ensure that only single instance should be created and single object can be used by all other 
+	classes.
+	1)private static variable instance
+	2)private constructor
+	3)public static getInstance method	
+--------------------------------------------------------------------------------------------------------------------------------------------------
+* Spring tool
+	Spring Tool Suite (STS) is a java IDE tailored for developing Spring-based enterprise applications.
+	 It is easier, faster, and more convenient. And most importantly it is based on Eclipse IDE.
+	 -----------------------------------------------------------------------------------------------------
+	 project Structure
+	 1)feature specific project approach
+	 in one package-customer realted classes under one package
+	 -customer,
+	 cutsomer controller
+	 customerrepo,etc
+	 -order
+	 odrdr,
+	 ordercontroller,
+	 
+	approach layer specific project sturcture-->layer specific project structure
+	1)controller
+	2)model -- domain/entity
+	3)service-- service classses which holdes the bsiness logic
+	
+	in my peoject we are holding three layer archetecture 
+	
+	that is we are having
+	controller layer-api layer
+	business layer-which holdes busines logic
+	persistance layer- which holds repository logic
+-------------------------------------------------------------------------------
+collection 
+	The Collection in Java is a framework that provides an architecture to store and manipulate the group of objects.
+	Java Collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, 		and deletion. 
+	Java Collection means a single unit of objects.
+	The Java collections framework provides a set of interfaces and classes to implement various data structures and algorithms.
+--------------------------------------------------------------------------------------------------------------------------------------------
+	hibernate
+	popular java framework 
+	Hibernate is ORM (Object-Relation Mapping) framework that allows us establish communication between Java programming 		language and the RDBMS.
+
+	Advantages
+
+	Portability, productivity, maintainability.
+	Open source framework.
+	It avoids repetitive code from the JDBC API.
+----------------------------------------------------------------------------------------
+	GIT AND GITHUB
+	
+	GIT
+	Git is a version control system to manage source code history. 
+	Git is a software.
+	Git is maintained by linux.
+	Git is a command-line tool
+	Git is focused on version control and code sharing.
+	
+	GITHUB
+	github is graphical user interface
+	GitHub is a hosting service for Git repositories.
+ 	Git is a service.
+ 	Git is maintained by MICrosoft.
+ 	GitHub is focused on centralized source code hosting.
+ 	------------------------------------------------------------------------------------------------------------------------
+ 	Static Variables: When a variable is declared as static, then a single copy of the variable is created and shared among all objects at a class level.
+ 	
+ 	Local Variables: A variable defined within a block or method or constructor is called local variable.
+ 	
+	These variable are created when the block in entered or the function is called and destroyed after exiting from the block or 		when the call returns from the function.
+	The scope of these variables exists only within the block in which the variable is declared. i.e. we can access these variable 		only within that block.
+
+	 Instance variables are non-static variables and are declared in a class outside any method, constructor or block.
+	As instance variables are declared in a class, these variables are created when an object of the class is created and destroyed 		when the object is destroyed.
+	
+	----------------------------------------------------------------------------------
+	
+	What is == in Java?
+	== is an operator that compares the memory or reference location of an object in the heap.
+
+	What is the .equal() Method in Java?
+	.equal() is a method that compares the actual content of the object.
+	
+	 wanted to clarify if I understand this correctly:
+
+	== is a reference comparison, i.e. both objects point to the same memory location
+	.equals() evaluates to the comparison of values in the objects
+	
+-------------------------------------------------------------------
+
+final is the keyword and access modifier which is used to apply restrictions on a class, method or variable.
+
+finally is the block in Java Exception Handling to execute the important code whether the exception occurs or not.
+
+finalize is the method in Java which is used to perform clean up processing just before object is garbage collected.
+
+----------------------------------------------------------- ------------
+	--Eureka Server is an application that holds the information about all client-service applications. 
+	--Every Micro service will register into the Eureka server and Eureka server knows all the client applications running on each 		port and IP address. 
+	--Eureka Server is also known as Discovery ServeR
+	
+--------------------------------------------------------- -------------
+
+ what is debugging in java
+	Debugging is the routine process of locating and removing bugs, errors or abnormalities from programs. It's a must have skill 		for any Java developer because it helps to find subtle bug that are not visible during code reviews or that only happens when 		a specific condition occurs.
+
+------------- ------------------- ----------------- ----------------------- -------------------------- ---------------------------- ---------------------
+Java Debugging with Eclipse
+Step One: Set Breakpoints. ...
+Step Two: Start the Program in Debug Mode. ...
+Step Three: Add Variables to Expressions for Examination. ...
+Step Four: Check the Variables Values in Expressions. ...
+Step Five: Step Into the Function. ...
+Step Six: Step Over. ...
+Step Seven: Check the Return Value from Function.
+
+
+-----------------------------------------------------------------
+
+Connecting Spring Boot with databases - MySQL and Oracle
+
+Add dependency for your database connector to pom.xml
+We would need to set up your database with a schema and the tables.
+Configure your connection to Your Database
+-spring.jpa.hibernate.ddl-auto=none
+-spring.datasource.url=jdbc:mysql://localhost:3306/todo_example
+-spring.datasource.username=todouser
+-spring.datasource.password=YOUR_PASSWORD
+--------------------------------------------------------------------------- 
+
+ for observer design pattern
+Observer design pattern is useful when you are interested in the state of an object and want to get notified whenever there is any change. In observer pattern, the object that watch on the state of another object are called Observer and the object that is being watched is called Subject.
+ex like you tubeA 
+
+spring data JPA
+JPA IBRRY, ALREADY Written 
+JAVa program and database
+just need to go repository layer and write a query
+whatever queries we are writing are and connectivity
+
+-----------------curosr--------- ------------------------------------- ------------------------ ---------------------- 
+
+
+Cursor fetches the data Row wise
+........... so Row Wise validation is possible using the cursor. 
+It retrieves one row at a time, unlike SQL select query which selects all rows at a time.
+ It is faster than While Loop but does have more overhead. It provides traversals over records of the database.
+----------------exception
+
+declare
+    p_name bank_service.f_name%type;
+    p_id bank_service.id_no %type;
+    
+begin
+    select f_name into p_name from bank_service where id_no = p_id;
+     dbms_output.put_line('customers is '|| p_name);
+     
+exception
+     when no_data_found then 
+       dbms_output.put_line(' customers is '|| p_id ||' not exist' );
+end;
+
+
+--user defined
+--1)raise through-- inbuilt msg will be user defined
+--2)raise application'--need to go with error no
+
+declare 
+ marks number := 85;
+ not_allowed exception;
+begin
+    if marks < 95 then 
+    raise not_allowed;
+    end if;
+exception
+    when not_allowed then 
+    dbms_output.put_line(' Sorry, Not eligible for MBBS.  ' );
+    dbms_output.put_line(SQLCODE ); --NO OF ENCOUNTER ERROR
+     dbms_output.put_line(SQLERRM ); -- RETURN ASSOCIATED WITH ERROR NNO
+end;
+-------------------------
+group by means sort data on column basis
+select name, max(salary) from table_name  griupby dept_id;
+------------------------
+garbage collection
+'
+to automatically determine what memory is no longer being used by a Java application and to recycle this memory for other use
+i.e. which object is unused ..
+and it will collect them and sent to garbage collector
+
+---------------------------------
+Serialization in Java is a mechanism of writing the state of an object into a byte-stream. It is mainly used in Hibernate, RMI, JPA, EJB and JMS technologies.
+
+The reverse operation of serialization is called deserialization where byte-stream is converted into an object. The serialization and deserialization process is platform-independent, it means you can serialize an object on one platform and deserialize it on a different platform.
+
+For serializing the object, we call the writeObject() method of ObjectOutputStream class, and for deserialization we call the readObject() method of ObjectInputStream class.
+
+We must have to implement the Serializable interface for serializing the object.
+
+---------------------------------------------------------------------------
+spring boot advantages
+Spring Boot works well with several servlet containers. ...
+Bootstrapping saves memory space. ...
+Decreased boilerplate code. ...
+No XML configuration required. ...
+WAR files are not required. ...
+POM dependency management. ...
+A large community of helpful users. ...
+------------------------------------------------------
+How to avoid NullPointerException in Java 8?
+These can be:
+Invoking a method from a null object.
+Accessing or modifying a null object's field.
+Taking the length of null, as if it were an array.
+Accessing or modifying the slots of null object, as if it were an array.
+Throwing null, as if it were a Throwable value.
+When you try to synchronize over a null object.
+---------
+Making sure an object is initialized properly by adding a null check before referencing its methods or properties.
+Using Apache Commons StringUtils for String operations e.g. using StringUtils.
+-----------------------------
+In Java, the main() method plays a vital role in program execution. The main() method is the first method that encounters first during execution. So, it is an entry point of a program. We cannot modify the syntax of the main() method. The only thing which we can change is the name of the String array argument. The syntax of the main() method is as follows:
+----------------
+The static is a keyword which we use in the main() method to define it as static. There is no object of the class available at the time of starting java runtime, and because of that, we have to define the main() method as static. By doing that, JVM can load the class into the main memory and call the main() method.
+-----------------------------------------------
